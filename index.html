@@ -60,8 +60,10 @@
         </div>
         <div class="response" id="response">
             Thank you for giving me another chance.<br>
-            I promise to listen, improve, and not repeat this.
-            U should open this: <link rel="import" href="https://www.instagram.com/accounts/blocked_accounts/">
+            I promise to listen, improve, and not repeat this.<br><br>
+            U should open this: 
+            <a href="https://www.instagram.com/accounts/blocked_accounts/" target="_blank">
+            </a>
         </div>
     </div>
 
@@ -71,7 +73,6 @@
         const response = document.getElementById('response');
         const container = document.querySelector('.container');
 
-        // Function to move the "No" button away from the mouse
         function moveNoButtonAway(event) {
             const rect = noButton.getBoundingClientRect();
             const buttonCenterX = rect.left + rect.width / 2;
@@ -80,31 +81,26 @@
             const mouseY = event.clientY;
 
             const distance = Math.sqrt((mouseX - buttonCenterX) ** 2 + (mouseY - buttonCenterY) ** 2);
-            const threshold = 100; // Distance in pixels to trigger movement
+            const threshold = 100;
 
             if (distance < threshold) {
-                // Calculate direction away from mouse
                 const deltaX = buttonCenterX - mouseX;
                 const deltaY = buttonCenterY - mouseY;
                 const length = Math.sqrt(deltaX ** 2 + deltaY ** 2);
-                const moveDistance = 50; // How far to move
+                const moveDistance = 50;
 
                 if (length > 0) {
                     const moveX = (deltaX / length) * moveDistance;
                     const moveY = (deltaY / length) * moveDistance;
-
                     noButton.style.transform = `translate(${moveX}px, ${moveY}px)`;
                 }
             } else {
-                // Reset position if mouse is far
                 noButton.style.transform = 'translate(0, 0)';
             }
         }
 
-        // Add mousemove listener to the container
         container.addEventListener('mousemove', moveNoButtonAway);
 
-        // Handle "Yes" button click
         yesButton.addEventListener('click', function() {
             document.querySelector('.message').style.display = 'none';
             document.querySelector('.buttons').style.display = 'none';
@@ -112,7 +108,4 @@
         });
     </script>
 </body>
-
 </html>
-
-
